@@ -34,6 +34,15 @@ def fight(player, enemy):
             print(f"Enemy hit u for {enemy_damage} damage.")
 
     if player.hp > 0:
-        print("\nYou're the winner!")
+        print("\nYou won the fight!")
     else:
-        print("\nYou lost the fight... better luck next time.")
+        print("\nYou lost the fight...")
+
+    again = input("Play again? (y/n): ").lower()
+    if again == "y":
+        player.hp = 20
+        enemy.hp = 15
+        fight(player, enemy)
+    else:
+        print("Thanks for playing")
+
