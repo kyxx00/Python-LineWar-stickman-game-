@@ -1,10 +1,11 @@
 import time
+from utils import show_fight, show_win, show_lose
 
 def fight(player, enemy):
     print("\nA fight has started!")
 
     while player.hp > 0 and enemy.hp > 0:
-        print("\n------------------")
+        show_fight()
         print(f"{player.name} HP: {player.hp}")
         print(f"{enemy.name} HP: {enemy.hp}")
 
@@ -17,16 +18,15 @@ def fight(player, enemy):
         if choice == "1":
             damage = player.attack()
             enemy.take_damage(damage)
-
             print(f"You attack for {damage} damage!")
             print(f"Enemy HP is now {enemy.hp}")
             time.sleep(1)
 
         elif choice == "2":
-            print("You block and take less damage this turn.")
+            print("You block and reduce damage this turn.")
 
         else:
-            print("Invalid choice.")
+            print("Invalid choice. You lose your turn.")
 
         if enemy.hp > 0:
             enemy_damage = enemy.attack()
@@ -37,15 +37,16 @@ def fight(player, enemy):
                     enemy_damage = 0
 
             player.take_damage(enemy_damage)
-
             print(f"Enemy attacks for {enemy_damage} damage!")
             print(f"Your HP is now {player.hp}")
             time.sleep(1)
 
     if player.hp > 0:
-        print("\nYou won the fight!")
+        show_win()
+        print("You won the fight!")
     else:
-        print("\nYou lost the fight...")
+        show_lose()
+        print("You lost the fight...")
 
     again = input("Play again? (y/n): ").lower()
     if again == "y":
@@ -53,4 +54,4 @@ def fight(player, enemy):
         enemy.hp = 15
         fight(player, enemy)
     else:
-        print("Thanks for playing")
+        print("Thanks for playing!")

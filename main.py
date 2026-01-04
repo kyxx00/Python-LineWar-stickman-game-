@@ -1,14 +1,12 @@
 from player import Player
 from enemy import Enemy
 from combat import fight
-from utils import show_title
 
 def main():
-    show_title()
-    player_name = input("Enter your name: ")
+    print("=== Stickman Fight ===")
 
-    player = Player(player_name)
-    enemy = Enemy("Enemy Stickman")
+    player = Player()
+    enemy = Enemy()
 
     fight(player, enemy)
 

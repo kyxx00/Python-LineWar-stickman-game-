@@ -1,11 +1,12 @@
+import random
+
 class Player:
-    def __init__(self, name):
-        self.name = name
+    def __init__(self):
+        self.name = "Player"
         self.hp = 20
-        self.attack_power = 5
 
     def attack(self):
-        return self.attack_power
+        return random.randint(3, 6)
 
     def take_damage(self, damage):
         self.hp -= damage
